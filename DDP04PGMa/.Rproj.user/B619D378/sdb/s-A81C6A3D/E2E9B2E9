@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# This shiny - app predict MPG from the HorsePower specification of the car\n# Based on R's mtcars database\n#\n# https://harmlammers.shinyapps.io/DDP04PGMa/\n#\n\nlibrary(shiny)\n\nshinyServer(function(input, output) {\n   mtcars$hpsp <- ifelse(mtcars$hp - 123 > 0, mtcars$hp - 123, 0)\n   model1 <- lm(mpg ~ hp, data = mtcars)\n   model2 <- lm(mpg ~ hpsp + hp, data = mtcars)\n   \n   model1pred <- reactive({\n      hpInput <- input$sliderHP\n      predict(model1, newdata = data.frame(hp = hpInput))\n   })\n   \n   model2pred <- reactive({\n      hpInput <- input$sliderHP\n      predict(model2, newdata = \n                 data.frame(hp = hpInput,\n                            hpsp = ifelse(hpInput - 123 > 0,\n                                           hpInput - 123, 0)))\n   })\n\n   output$plot1 <- renderPlot({\n      hpInput <- input$sliderHP\n      \n      plot(mtcars$hp, mtcars$mpg, xlab = \"HorsePower\", \n           ylab = \"Miles Per Gallon\", bty = \"n\", pch = 16,\n           xlim = c(50, 350), ylim = c(10, 35))\n      if(input$showModel1){\n         abline(model1, col = \"red\", lwd = 2)\n      }\n      if(input$showModel2){\n         model2lines <- predict(model2, newdata = data.frame(\n            hp = 50:350, hpsp = ifelse(50:350 - 123 > 0, 50:350 - 123, 0)\n         ))\n         lines(50:350, model2lines, col = \"blue\", lwd = 2)\n      }\n\n      legend(25, 250, c(\"Model 1 Prediction\", \"Model 2 Prediction\"), pch = 16, \n             col = c(\"red\", \"blue\"), bty = \"n\", cex = 1.2)\n      points(hpInput, model1pred(), col = \"red\", pch = 16, cex = 2)\n      points(hpInput, model2pred(), col = \"blue\", pch = 16, cex = 2)\n   })\n   \n   output$pred1 <- renderText({\n      model1pred()\n   })\n   \n   output$pred2 <- renderText({\n      model2pred()\n   })\n})",
+    "created" : 1492005126829.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3785774903",
+    "id" : "E2E9B2E9",
+    "lastKnownWriteTime" : 1492011814,
+    "last_content_update" : 1492011814525,
+    "path" : "C:/AA DataScience/MOOC JHU 09 Developing Data Products/DDP04PGMa/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

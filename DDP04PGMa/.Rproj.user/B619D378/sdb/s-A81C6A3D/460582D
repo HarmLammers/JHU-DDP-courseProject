@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Developing Data Products - Peer Graded Assignment\n========================================================\nauthor: Harm Lammers\ndate: 12-04-2017\nautosize: true\n\nIntroduction\n========================================================\n\nThis presentation is part of Coursera's MOOC on Data Science by JHU\n\nIt's goal is to ensure a student understands and masters the concepts of \n- building a R shiny application and \n- presenting this with R Presentation.\n\nThe source code can be found on Github: 'http://github/harmlammers'.\n\n\nApplication\n========================================================\n\nThe application is a small modification of the prediction model used in class.  \nI used the mtcars database to predict the MilesPerGallon on a given Horsepower value.\n\nThe application shows the results of two prediction models in a graph.  \nThe user manipulates HP as the input and the application predicts the values of MPG given the two models derived from the mtcars - database.  \n  \nThe user can remove or incl{ude the prediction lines of the two models presented.  \nhttps://harmlammers.shinyapps.io/DDP04PGMa/\n\n\nData\n========================================================\n  \nThe model is based on R's dataset mtcars.  \n  \nDocumentation: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html  \n  \nThis model only uses the MilesPerGallon and the Horsepower values.  \n  \n```{r}\ndata <- mtcars[,c(1,4)] \nsummary(data)\n```\n\nVisual on the data\n========================================================\n  \n```{r, echo=FALSE}\nlibrary(car)\nscatterplot.matrix(mtcars[,c(1,4)])\n```\n",
+    "created" : 1492007769121.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2990127049",
+    "id" : "460582D",
+    "lastKnownWriteTime" : 1492011431,
+    "last_content_update" : 1492011431301,
+    "path" : "C:/AA DataScience/MOOC JHU 09 Developing Data Products/DDP04PGMa/DDP04PGMa.Rpres",
+    "project_path" : "DDP04PGMa.Rpres",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_presentation"
+}
