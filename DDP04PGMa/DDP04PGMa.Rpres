@@ -13,7 +13,7 @@ It's goal is to ensure a student understands and masters the concepts of
 - building a R shiny application and 
 - presenting this with R Presentation.
 
-The source code can be found on Github: 'http://github/harmlammers'.
+The source code can be found on Github: 'https://github.com/HarmLammers/JHU-DDP-courseProject/tree/master/DDP04PGMa'.
 
 
 Application
